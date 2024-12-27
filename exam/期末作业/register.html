@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">GalGame 社区</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">首页</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>注册</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="newUsername">用户名</label>
+                <input type="text" class="form-control" id="newUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">密码</label>
+                <input type="password" class="form-control" id="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">确认密码</label>
+                <input type="password" class="form-control" id="confirmPassword" required>
+            </div>
+            <button type="submit" class="btn btn-primary">注册</button>
+            <a href="login.html" class="btn btn-secondary mt-3">登录</a>
+            <span id="passwordError" class="text-danger"></span>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.2.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#registerForm').submit(function (e) {
+                e.preventDefault();
+                const newUsername = $('#newUsername').val();
+                const newPassword = $('#newPassword').val();
+                const confirmPassword = $('#confirmPassword').val();
+                const passwordError = $('#passwordError');
+
+                passwordError.text('');
+
+                if (newPassword === confirmPassword) {
+                    // 这里可以添加与后端交互注册用户的逻辑，暂先跳转
+                    window.location.href = 'login.html';
+                } else {
+                    passwordError.text('两次输入的密码不一致');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
